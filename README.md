@@ -4,5 +4,5 @@ Fully functioning clone of the Spotify web app completely using React.js. Involv
 
 Feel free to reach out to me for guidance or more information.
 
-LinkedIn : https://www.linkedin.com/in/mehulchattopadhyay/
-Instagram : https://www.instagram.com/bengalidrummerboy/
+1. LinkedIn : https://www.linkedin.com/in/mehulchattopadhyay/
+2. Instagram : https://www.instagram.com/bengalidrummerboy/
