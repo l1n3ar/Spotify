@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import SpotifyWebApi from "spotify-web-api-js";
-import { useStateValue } from "../StateProvider";
-import Player from "../Player";
-import { getTokenFromResponse } from "./spotify";
+import React, { useEffect } from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
+import { useStateValue } from './services/StateProvider';
+import Player from './components/Player';
+import { getTokenFromResponse } from './services/spotify';
 
-import Login from "../Login";
+import Login from '../Login';
 
 const s = new SpotifyWebApi();
 
@@ -14,46 +14,46 @@ function App() {
   useEffect(() => {
     // Set token
     const hash = getTokenFromResponse();
-    window.location.hash = "";
+    window.location.hash = '';
     let _token = hash.access_token;
 
     if (_token) {
       s.setAccessToken(_token);
 
       dispatch({
-        type: "SET_TOKEN",
+        type: 'SET_TOKEN',
         token: _token,
       });
 
-      s.getPlaylist("4GpBODwgLjOwL6JcBunQcr").then((response) =>
+      s.getPlaylist('4GpBODwgLjOwL6JcBunQcr').then((response) =>
         dispatch({
-          type: "SET_DISCOVER_WEEKLY",
+          type: 'SET_DISCOVER_WEEKLY',
           discover_weekly: response,
         })
       );
 
       s.getMyTopArtists().then((response) =>
         dispatch({
-          type: "SET_TOP_ARTISTS",
+          type: 'SET_TOP_ARTISTS',
           top_artists: response,
         })
       );
 
       dispatch({
-        type: "SET_SPOTIFY",
+        type: 'SET_SPOTIFY',
         spotify: s,
       });
 
       s.getMe().then((user) => {
         dispatch({
-          type: "SET_USER",
+          type: 'SET_USER',
           user,
         });
       });
 
       s.getUserPlaylists().then((playlists) => {
         dispatch({
-          type: "SET_PLAYLISTS",
+          type: 'SET_PLAYLISTS',
           playlists,
         });
       });
@@ -61,7 +61,7 @@ function App() {
   }, [token, dispatch]);
 
   return (
-    <div className="app">
+    <div className='app'>
       {!token && <Login />}
       {token && <Player spotify={s} />}
     </div>
