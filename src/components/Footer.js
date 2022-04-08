@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useStateValue } from '../services/StateProvider';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
@@ -12,7 +12,7 @@ import './Footer.css';
 import { Grid, Slider } from '@material-ui/core';
 
 function Footer({ spotify }) {
-  const [{ token, item, playing }, dispatch] = useStateValue();
+  const [{ item, playing }, dispatch] = useStateValue();
 
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((r) => {
@@ -28,7 +28,7 @@ function Footer({ spotify }) {
         item: r.item,
       });
     });
-  }, [spotify]);
+  }, [spotify, dispatch]);
 
   const handlePlayPause = () => {
     if (playing) {

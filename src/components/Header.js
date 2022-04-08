@@ -5,7 +5,7 @@ import { Avatar } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 function Header({ spotify }) {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }, __] = useStateValue();
 
   console.log('User' + user);
 
@@ -19,7 +19,7 @@ function Header({ spotify }) {
         />
       </div>
       <div className='header__right'>
-        <Avatar alt={user?.display_name} src={user?.images[0].url} />
+        <Avatar src={user?.images[0].url} />
         <h4>{user?.display_name}</h4>
       </div>
     </div>

@@ -8,7 +8,7 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import { useStateValue } from '../services/StateProvider';
 
 function Sidebar() {
-  const [{ playlists }, dispatch] = useStateValue();
+  const [{ playlists }, __] = useStateValue();
   console.log(playlists);
 
   return (
