@@ -5,7 +5,7 @@ import { Avatar } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 function Header({ spotify }) {
-  const [{ user }, __] = useStateValue();
+  const [{ user }, ,] = useStateValue();
 
   console.log('User' + user);
 
